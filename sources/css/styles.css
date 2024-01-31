@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+
+  background-image: url("../img/fondo-principal.jpg");
+
+  background-size: cover;
+}
+
+#logoImg {
+  height: 2rem;
+  width: 2rem;
+}
+
+#mainButton {
+  padding: 10px 35px;
+  background-color: aquamarine;
+  border-radius: 15px;
+  border-color: transparent;
+}
+
+/* temporal */
+
+/* h1 {
+  color: white;
+}
+
+p {
+  color: white;
+} */
