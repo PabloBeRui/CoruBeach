@@ -22,7 +22,7 @@ mainButton.addEventListener("click", () => {
 
     let imgCard = document.createElement("img");
     imgCard.classList.add("imgCard");
-    imgCard.setAttribute("src", `../img/beaches/${beach.photo}.jpeg`);
+    imgCard.setAttribute("src", `./sources/img/beaches/${beach.photo}.jpeg`);
 
     let pCard = document.createElement("p");
     pCard.classList.add("pCard");
