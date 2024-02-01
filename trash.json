@@ -1,0 +1,181 @@
+[
+    {
+        "origen": {
+            "productor": "Agencia Estatal de Meteorolog�a - AEMET. Gobierno de Espa�a",
+            "web": "http://www.aemet.es",
+            "language": "es",
+            "copyright": "� AEMET. Autorizado el uso de la informaci�n y su reproducci�n citando a AEMET como autora de la misma.",
+            "notaLegal": "http://www.aemet.es/es/nota_legal"
+        },
+        "elaborado": "2024-02-01T07:50:19",
+        "nombre": "Riazor-Orz�n",
+        "localidad": 15030,
+        "prediccion": {
+            "dia": [
+                {
+                    "estadoCielo": {
+                        "value": "",
+                        "f1": 120,
+                        "descripcion1": "muy nuboso",
+                        "f2": 120,
+                        "descripcion2": "muy nuboso"
+                    },
+                    "viento": {
+                        "value": "",
+                        "f1": 210,
+                        "descripcion1": "flojo",
+                        "f2": 210,
+                        "descripcion2": "flojo"
+                    },
+                    "oleaje": {
+                        "value": "",
+                        "f1": 330,
+                        "descripcion1": "fuerte",
+                        "f2": 330,
+                        "descripcion2": "fuerte"
+                    },
+                    "tMaxima": {
+                        "value": "",
+                        "valor1": 16
+                    },
+                    "sTermica": {
+                        "value": "",
+                        "valor1": 440,
+                        "descripcion1": "fresco"
+                    },
+                    "tAgua": {
+                        "value": "",
+                        "valor1": 13
+                    },
+                    "uvMax": {
+                        "value": "",
+                        "valor1": 1
+                    },
+                    "fecha": 20240201,
+                    "stermica": {
+                        "value": "",
+                        "valor1": 440,
+                        "descripcion1": "fresco"
+                    },
+                    "tagua": {
+                        "value": "",
+                        "valor1": 13
+                    },
+                    "tmaxima": {
+                        "value": "",
+                        "valor1": 16
+                    }
+                },
+                {
+                    "estadoCielo": {
+                        "value": "",
+                        "f1": 100,
+                        "descripcion1": "despejado",
+                        "f2": 110,
+                        "descripcion2": "nuboso"
+                    },
+                    "viento": {
+                        "value": "",
+                        "f1": 210,
+                        "descripcion1": "flojo",
+                        "f2": 210,
+                        "descripcion2": "flojo"
+                    },
+                    "oleaje": {
+                        "value": "",
+                        "f1": 330,
+                        "descripcion1": "fuerte",
+                        "f2": 330,
+                        "descripcion2": "fuerte"
+                    },
+                    "tMaxima": {
+                        "value": "",
+                        "valor1": 17
+                    },
+                    "sTermica": {
+                        "value": "",
+                        "valor1": 440,
+                        "descripcion1": "fresco"
+                    },
+                    "tAgua": {
+                        "value": "",
+                        "valor1": 13
+                    },
+                    "uvMax": {
+                        "value": "",
+                        "valor1": 1
+                    },
+                    "fecha": 20240202,
+                    "stermica": {
+                        "value": "",
+                        "valor1": 440,
+                        "descripcion1": "fresco"
+                    },
+                    "tagua": {
+                        "value": "",
+                        "valor1": 13
+                    },
+                    "tmaxima": {
+                        "value": "",
+                        "valor1": 17
+                    }
+                },
+                {
+                    "estadoCielo": {
+                        "value": "",
+                        "f1": 100,
+                        "descripcion1": "despejado",
+                        "f2": 100,
+                        "descripcion2": "despejado"
+                    },
+                    "viento": {
+                        "value": "",
+                        "f1": 210,
+                        "descripcion1": "flojo",
+                        "f2": 210,
+                        "descripcion2": "flojo"
+                    },
+                    "oleaje": {
+                        "value": "",
+                        "f1": 320,
+                        "descripcion1": "moderado",
+                        "f2": 320,
+                        "descripcion2": "moderado"
+                    },
+                    "tMaxima": {
+                        "value": "",
+                        "valor1": 18
+                    },
+                    "sTermica": {
+                        "value": "",
+                        "valor1": 450,
+                        "descripcion1": "suave"
+                    },
+                    "tAgua": {
+                        "value": "",
+                        "valor1": 14
+                    },
+                    "uvMax": {
+                        "value": "",
+                        "valor1": 1
+                    },
+                    "fecha": 20240203,
+                    "stermica": {
+                        "value": "",
+                        "valor1": 450,
+                        "descripcion1": "suave"
+                    },
+                    "tagua": {
+                        "value": "",
+                        "valor1": 14
+                    },
+                    "tmaxima": {
+                        "value": "",
+                        "valor1": 18
+                    }
+                }
+            ]
+        },
+        "id": 1503005
+    }
+]

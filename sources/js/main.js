@@ -1,3 +1,5 @@
+import { apiWeather } from "./apiWeather.js";
+
 export const main = () => {
   const beachArray = [
     { beachName: "Riazor", photo: 1 },
@@ -37,18 +39,19 @@ export const main = () => {
 
   searchButton.addEventListener("click", () => {
     if (searchInput.value === "") {
-      return;
+      renderMain(beachArray);
     } else {
       //!Filtramos el array con el valor que nos pasa el usuario en el input y hacemos un nuevo renderizado con el array filtrado
       let pattern = searchInput.value.toLowerCase();
       let filtered = beachArray.filter((beach) =>
-      beach.beachName.toLowerCase().includes(pattern));
-      
-      if(filtered.length === 0){
+        beach.beachName.toLowerCase().includes(pattern)
+      );
+
+      if (filtered.length === 0) {
         alert("No se ha encontrado ningún resultado");
         return;
       }
-      cardsContainerDiv.innerHTML = '';
+      cardsContainerDiv.innerHTML = "";
       renderMain(filtered);
     }
   });
