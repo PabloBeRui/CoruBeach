@@ -1,11 +1,11 @@
-import { apiWeather } from "./apiWeather.js";
+import { weatherRender } from "./render/weatherRender.js";
 
 export const main = () => {
   const beachArray = [
-    { beachName: "Riazor", photo: 1 },
-    { beachName: "Orzan", photo: 2 },
-    { beachName: "Lapas", photo: 3 },
-    { beachName: "Caion", photo: 4 },
+    { beachName: "Riazor", photo: 1, id: "1503005" },
+    { beachName: "Orzan", photo: 2, id: "1503005" },
+    { beachName: "Boa grande", photo: 3, id: "1505701" },
+    { beachName: "Caion", photo: 4, id: "1504101" },
   ];
   let mainButton = document.getElementById("mainButton");
 
@@ -24,39 +24,8 @@ export const main = () => {
   searchInput.placeholder = "busca tu playa";
   searchInput.id = "searchInput";
 
-  //! Cuando se aprieta el boton , hacemos que desaparezca el boton y cargue un nuevo div, que será el contenedor de las cartas
-
-  mainButton.addEventListener("click", () => {
-    mainButton.style.display = "none";
-    searchDiv.appendChild(searchInput);
-    searchDiv.appendChild(searchButton);
-    main.appendChild(searchDiv);
-
-    main.appendChild(cardsContainerDiv);
-
-    renderMain(beachArray);
-  });
-
-  searchButton.addEventListener("click", () => {
-    if (searchInput.value === "") {
-      renderMain(beachArray);
-    } else {
-      //!Filtramos el array con el valor que nos pasa el usuario en el input y hacemos un nuevo renderizado con el array filtrado
-      let pattern = searchInput.value.toLowerCase();
-      let filtered = beachArray.filter((beach) =>
-        beach.beachName.toLowerCase().includes(pattern)
-      );
-
-      if (filtered.length === 0) {
-        alert("No se ha encontrado ningún resultado");
-        return;
-      }
-      cardsContainerDiv.innerHTML = "";
-      renderMain(filtered);
-    }
-  });
-
-  function renderMain(userArray) {
+  //! función que renderiza las cards
+  async function renderMain(userArray) {
     for (let beach of userArray) {
       let cardDiv = document.createElement("div");
       cardDiv.classList.add("cardDiv");
@@ -72,6 +41,44 @@ export const main = () => {
       cardDiv.appendChild(imgCard);
       cardDiv.appendChild(pCard);
       cardsContainerDiv.appendChild(cardDiv);
+
+      //importamos weatherRender, y lo añadimos al contenedor de las cards
+      let beachId = beach.id;
+
+      const weatherDiv = await weatherRender(beachId);
+
+      cardsContainerDiv.appendChild(weatherDiv);
     }
   }
+  //! Cuando se aprieta el boton , hacemos que desaparezca el boton y cargue un nuevo div, que será el contenedor de las cartas
+
+  mainButton.addEventListener("click", () => {
+    mainButton.style.display = "none";
+    searchDiv.append(searchInput, searchButton);
+    main.appendChild(searchDiv);
+
+    main.appendChild(cardsContainerDiv);
+
+    renderMain(beachArray);
+  });
+
+  searchButton.addEventListener("click", () => {
+    if (searchInput.value === "") {
+      cardsContainerDiv.innerHTML = "";
+      renderMain(beachArray);
+    } else {
+      //!Filtramos el array con el valor que nos pasa el usuario en el input y hacemos un nuevo renderizado con el array filtrado
+      let userInput = searchInput.value.toLowerCase();
+      let filtered = beachArray.filter((beach) =>
+        beach.beachName.toLowerCase().includes(userInput)
+      );
+
+      if (filtered.length === 0) {
+        alert("No se ha encontrado ningún resultado");
+        return;
+      }
+      cardsContainerDiv.innerHTML = "";
+      renderMain(filtered);
+    }
+  });
 };
