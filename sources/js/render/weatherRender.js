@@ -1,26 +1,27 @@
-// Creamos las variables que con los valores que necesitamos del json para renderizar.  creamos el div que englobe los componentes de la API del tiempo , creamos los componentes que iran dentro y despues lo añadimos al contenedor de cada carta.
+// Creamos las variables  con los valores que necesitamos del json para renderizar.  creamos el div que englobe los componentes de la API del tiempo , creamos los componentes que iran dentro y despues lo añadimos al contenedor de cada carta.
 
 import { apiWeather } from "../apiWeather.js";
 
-
-
-
 export const weatherRender = async (beachId) => {
+  try {
+    //crea variable para cada playa
+    const apiWeatherJson = await apiWeather(beachId);
 
-    //TODO crear variable para cada playa
-  const apiWeatherJson = await apiWeather(beachId);
+    if (!apiWeatherJson || !apiWeatherJson[0].prediccion.dia[0]) {
+      throw new Error("Datos meteorológicos incompletos o no disponibles.");
+    }
 
-  // Creamos las variables que con los valores que necesitamos del json para renderizar
+    // Creamos las variables que con los valores que necesitamos del json para renderizar
 
-  const degrees = apiWeatherJson[0].prediccion.dia[0].tMaxima.valor1;
-  const sky = apiWeatherJson[0].prediccion.dia[0].estadoCielo.descripcion1;
-  const wind = apiWeatherJson[0].prediccion.dia[0].viento.descripcion1;
-  const wave = apiWeatherJson[0].prediccion.dia[0].oleaje.descripcion1;
+    const degrees = apiWeatherJson[0].prediccion.dia[0].tMaxima.valor1;
+    const sky = apiWeatherJson[0].prediccion.dia[0].estadoCielo.descripcion1;
+    const wind = apiWeatherJson[0].prediccion.dia[0].viento.descripcion1;
+    const wave = apiWeatherJson[0].prediccion.dia[0].oleaje.descripcion1;
 
-  //   creamos el div que englobe los componentes de la API del tiempo , creamos los componentes que iran dentro y despues lo añadimos al contenedor de cada carta.
+    //   creamos el div que englobe los componentes de la API del tiempo , creamos los componentes que iran dentro y despues lo añadimos al contenedor de cada carta.
 
-  let weatherDiv = document.createElement("div");
-  weatherDiv.innerHTML = `
+    let weatherDiv = document.createElement("div");
+    weatherDiv.innerHTML = `
     <ul>
   <li id="degrees" class="weatherItemLi">Temperatura: ${degrees}</li>
   <li id="sky" class="weatherItemLi">Cielo: ${sky}</li>
@@ -31,5 +32,8 @@ export const weatherRender = async (beachId) => {
     
     `;
 
-  return weatherDiv;
+    return weatherDiv;
+  } catch (e) {
+    console.error("Ha habido un error:", e);
+  }
 };

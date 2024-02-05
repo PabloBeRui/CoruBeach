@@ -21,7 +21,7 @@ export const main = () => {
   searchButton.innerText = "Buscar";
   searchButton.id = "searchButton";
 
-  searchInput.placeholder = "busca tu playa";
+  searchInput.placeholder = "Busca tu playa";
   searchInput.id = "searchInput";
 
   //! función que renderiza las cards
@@ -47,10 +47,10 @@ export const main = () => {
 
       const weatherDiv = await weatherRender(beachId);
 
-      cardsContainerDiv.appendChild(weatherDiv);
+      cardDiv.appendChild(weatherDiv);
     }
   }
-  //! Cuando se aprieta el boton , hacemos que desaparezca el boton y cargue un nuevo div, que será el contenedor de las cartas
+  // Cuando se aprieta el boton , hacemos que desaparezca el propio boton y cargue un nuevo div, que será el contenedor de las cartas
 
   mainButton.addEventListener("click", () => {
     mainButton.style.display = "none";
@@ -67,7 +67,7 @@ export const main = () => {
       cardsContainerDiv.innerHTML = "";
       renderMain(beachArray);
     } else {
-      //!Filtramos el array con el valor que nos pasa el usuario en el input y hacemos un nuevo renderizado con el array filtrado
+      //Filtramos el array con el valor que nos pasa el usuario en el input y hacemos un nuevo renderizado con el array filtrado
       let userInput = searchInput.value.toLowerCase();
       let filtered = beachArray.filter((beach) =>
         beach.beachName.toLowerCase().includes(userInput)
