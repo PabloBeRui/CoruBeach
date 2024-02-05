@@ -1,12 +1,14 @@
+//TODO showWheather-> boton para mostrar u ocultar
+
+//TODO cargar imagenes de 10 en 10, hay que crear un listado donde se pueda pinchar y elegir. para hacer esto tenemos que modificar el bucle for of y tenemos que añadir el indice abajo.
+
+//Importamos el array de playas (beachArray)
+
+import { beachArray } from "../data/beachData.js";
+import { indexRender } from "./render/indexRender.js";
 import { weatherRender } from "./render/weatherRender.js";
 
 export const main = () => {
-  const beachArray = [
-    { beachName: "Riazor", photo: 1, id: "1503005" },
-    { beachName: "Orzan", photo: 2, id: "1503005" },
-    { beachName: "Boa grande", photo: 3, id: "1505701" },
-    { beachName: "Caion", photo: 4, id: "1504101" },
-  ];
   let mainButton = document.getElementById("mainButton");
 
   let main = document.getElementById("main");
@@ -52,6 +54,8 @@ export const main = () => {
 
       cardDiv.appendChild(weatherDiv);
     }
+    let indexDiv = indexRender();
+    main.appendChild(indexDiv);
   }
   // Cuando se aprieta el boton , hacemos que desaparezca el propio boton y cargue un nuevo div, que será el contenedor de las cartas
 
