@@ -2,30 +2,34 @@
 
 //TODO añadir al index primera y ultima pagina
 //importamos el array de playas
-import { beachArray } from "../../data/beachData.js"
+import { beachArray } from "../../data/beachData.js";
 
+export const indexRender = () => {
+  let numIndex = Math.ceil(beachArray.length / 5);
+  // console.log(numIndex)
+  let indexRenderDiv = document.createElement("div");
+  let indexUl = document.createElement("ul");
 
-export const indexRender=() => {
-   
-    let numIndex= Math.ceil(beachArray.length/5);
-    // console.log(numIndex)
-    let indexRenderDiv = document.createElement('div');
-    let indexUl = document.createElement('ul');
-    
-    
-  for(let i=0; i<numIndex; i++){
-    let indexLi = document.createElement('li');
-    indexLi.textContent = `${i+1}`;
-    indexLi.value = `${i+1}`;
+  for (let i = 0; i < numIndex; i++) {
+    let indexLi = document.createElement("li");
+    indexLi.textContent = `${i + 1}`;
+    indexLi.value = `${i + 1}`;
     indexLi.classList.add("indexLi");
     indexUl.appendChild(indexLi);
     // console.log(indexLi.value)
   }
-  
+  let prevLi = document.createElement("li");
+  prevLi.classList.add("indexLi");
+  prevLi.value = 1;
+  prevLi.innerText = "<";
+  let lastLi = document.createElement("li");
+  lastLi.classList.add("indexLi");
+  lastLi.value = numIndex;
+  lastLi.innerText = ">";
+  indexUl.prepend(prevLi);
+  indexUl.appendChild(lastLi);
+
   indexRenderDiv.appendChild(indexUl);
 
   return indexRenderDiv;
-
-}
-
-  
+};
