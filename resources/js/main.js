@@ -27,8 +27,14 @@ export const main = () => {
   searchInput.id = "searchInput";
 
   //! función que renderiza las cards
-  async function renderMain(userArray) {
-    for (let beach of userArray) {
+  async function renderMain(userArray, indexValue = 1) {
+    
+    //Obtenemos el último elemento de la página que nos indica el usuario y seleccionamos los 5 elementos anteriores que queremos mostrar
+    let lastElement = indexValue * 5;
+    let slicedArray = userArray.slice(lastElement - 5, lastElement);
+
+    
+    for (let beach of slicedArray) {
       let cardDiv = document.createElement("div");
       cardDiv.classList.add("cardDiv");
 
@@ -54,9 +60,24 @@ export const main = () => {
 
       cardDiv.appendChild(weatherDiv);
     }
+
+    //! Introducimos el renderizado del index
     let indexDiv = indexRender();
     main.appendChild(indexDiv);
-  }
+
+    //seleccionamos todos los li y obtenemos el value del li seleccionado
+    let indexLi = document.querySelectorAll(".indexLi");
+    indexLi.forEach((e) => {
+      e.addEventListener("click", (a) => {
+        cardsContainerDiv.innerText = ""
+        indexDiv.innerText = ""
+        let selectedIndex = a.currentTarget.value;
+        renderMain(userArray, selectedIndex);
+      });
+    });
+   
+}
+
   // Cuando se aprieta el boton , hacemos que desaparezca el propio boton y cargue un nuevo div, que será el contenedor de las cartas
 
   mainButton.addEventListener("click", () => {
@@ -88,6 +109,5 @@ export const main = () => {
       renderMain(filtered);
     }
   });
-};
-
+}
 main();
