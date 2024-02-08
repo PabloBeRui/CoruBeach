@@ -4,13 +4,14 @@
 //importamos el array de playas
 import { beachArray } from "../../data/beachData.js";
 
-
 //por defecto carga el array con todas las playas
 export const indexRender = (userArray) => {
-  let numIndex = Math.ceil(userArray.length / 5);
+  let numIndex = Math.ceil(userArray.length / 4);
   // console.log(numIndex)
   let indexRenderDiv = document.createElement("div");
+  indexRenderDiv.setAttribute("id", "indexRenderDiv");
   let indexUl = document.createElement("ul");
+  indexUl.setAttribute("id", "indexUl");
 
   for (let i = 0; i < numIndex; i++) {
     let indexLi = document.createElement("li");
@@ -35,3 +36,5 @@ export const indexRender = (userArray) => {
 
   return indexRenderDiv;
 };
+
+//TODO si hay más de 5 paginas de index, sustiruir el 5 por ...(ultimo li del ul?)

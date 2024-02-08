@@ -18,6 +18,13 @@ body {
   background-size: cover;
 }
 
+#header {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
 #logoImg {
   height: 2rem;
   width: 2rem;
@@ -30,12 +37,41 @@ body {
   border-color: transparent;
 }
 
-/* temporal */
-
-/* h1 {
-  color: white;
+#cardsContainerDiv {
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
 }
 
-p {
-  color: white;
-} */
+.cardDiv {
+  width: 55vw;
+}
+
+.cardDivImages {
+  display: flex;
+
+  scroll-snap-type: x;
+  overflow-x: scroll;
+  height: 14vh;
+  width: 55vw;
+  border-radius: 60px 12px 60px 12px;
+}
+
+.imgCard {
+  scroll-snap-align: start;
+  width: 100vw;
+}
+
+#indexRenderDiv {
+  margin-top: 2vh;
+}
+
+#indexUl {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+}
+
+#indexUl li.indexLi{
+  font-size: 2rem;
+}
