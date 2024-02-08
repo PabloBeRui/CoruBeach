@@ -20,8 +20,11 @@ export const main = () => {
 
   //!Creamos los componentes del buscador
   let searchDiv = document.createElement("div");
+  let searchForm=document.createElement('form')
   let searchInput = document.createElement("input");
   let searchButton = document.createElement("button");
+
+  searchForm.setAttribute('id','searchForm')
 
   searchButton.innerText = "Buscar";
   searchButton.id = "searchButton";
@@ -105,15 +108,17 @@ export const main = () => {
 
   mainButton.addEventListener("click", () => {
     mainButton.style.display = "none";
-    searchDiv.append(searchInput, searchButton);
+    searchForm.append(searchInput,searchButton)
+    searchDiv.append(searchForm);
     main.appendChild(searchDiv);
 
     main.appendChild(cardsContainerDiv);
 
     renderMain(beachArray);
   });
-
-  searchButton.addEventListener("click", () => {
+//listener del boton de buscar, se hace un prevent default para evitar un submit y que recargue la pagina
+  searchButton.addEventListener("click", (e) => {
+    e.preventDefault();
     if (searchInput.value === "") {
       cardsContainerDiv.innerHTML = "";
       indexDiv.innerHTML = "";
