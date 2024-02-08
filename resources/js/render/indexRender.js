@@ -4,8 +4,10 @@
 //importamos el array de playas
 import { beachArray } from "../../data/beachData.js";
 
-export const indexRender = () => {
-  let numIndex = Math.ceil(beachArray.length / 5);
+
+//por defecto carga el array con todas las playas
+export const indexRender = (userArray) => {
+  let numIndex = Math.ceil(userArray.length / 5);
   // console.log(numIndex)
   let indexRenderDiv = document.createElement("div");
   let indexUl = document.createElement("ul");

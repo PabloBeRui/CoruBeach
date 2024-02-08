@@ -86,7 +86,7 @@ export const main = () => {
     }
 
     //! Introducimos el renderizado del index
-    indexDiv = indexRender();
+    indexDiv = indexRender(userArray);
     main.appendChild(indexDiv);
 
     //seleccionamos todos los li y obtenemos el value del li seleccionado
@@ -136,3 +136,6 @@ export const main = () => {
   });
 };
 main();
+
+
+//todo hay que meter el input y button en un form y detener la propagacion de eventos
