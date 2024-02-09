@@ -1,13 +1,10 @@
-//TODO showWheather-> boton para mostrar u ocultar
-
-//TODO cargar imagenes de 10 en 10, hay que crear un listado donde se pueda pinchar y elegir. para hacer esto tenemos que modificar el bucle for of y tenemos que añadir el indice abajo.
-
 //Importamos el array de playas (beachArray)
-
 import { beachArray } from "../data/beachData.js";
 import { indexRender } from "./render/indexRender.js";
 import { weatherRender } from "./render/weatherRender.js";
 
+//Seleccionamos componentes; main, buttonMain, header y creamos un  div al que le damos
+//una id
 export const main = () => {
   let mainButton = document.getElementById("mainButton");
 
@@ -15,10 +12,10 @@ export const main = () => {
   let header = document.getElementById("header");
   let cardsContainerDiv = document.createElement("div");
   cardsContainerDiv.setAttribute("id", "cardsContainerDiv");
-
+  //Declaramos la variable global indexDiv, que utilizaremos más adelante
   let indexDiv;
 
-  //!Creamos los componentes del buscador
+  //Creamos los componentes del buscador y le damos atributos
   let searchDiv = document.createElement("div");
   let searchForm = document.createElement("form");
   let searchInput = document.createElement("input");
@@ -32,12 +29,16 @@ export const main = () => {
   searchInput.placeholder = "Busca tu playa";
   searchInput.id = "searchInput";
 
-  //! función que renderiza las cards
+ 
+
+  //! Función que renderiza las cards
+
   async function renderMain(userArray, indexValue = 1) {
-    //Obtenemos el último elemento de la página que nos indica el usuario y seleccionamos los 5 elementos anteriores que queremos mostrar
+    //Obtenemos el último elemento de la página que nos indica el usuario y seleccionamos los 4 elementos anteriores que queremos mostrar
     let lastElement = indexValue * 4;
     let slicedArray = userArray.slice(lastElement - 4, lastElement);
-
+    //Hacemos un for of que cree los 4 elementos requeridos con la informacion
+    // del slicedArray
     for (let beach of slicedArray) {
       let cardDiv = document.createElement("div");
       cardDiv.classList.add("cardDiv");
@@ -46,7 +47,7 @@ export const main = () => {
 
       let cardDivImages = document.createElement("div");
       cardDivImages.classList.add("cardDivImages");
-
+      // Creamos las imágenes
       let imgCard = document.createElement("img");
       imgCard.classList.add("imgCard");
       imgCard.setAttribute(
@@ -60,7 +61,7 @@ export const main = () => {
         "src",
         `./resources/img/beaches/${beach.photo}b.jpeg`
       );
-
+      //Creamos una p con el nombre de la playa
       let pCard = document.createElement("p");
       pCard.classList.add("pCard");
       pCard.innerText = `${beach.beachName}`;
@@ -80,13 +81,13 @@ export const main = () => {
       weatherDiv.innerHTML = `<p>Mostrar tiempo</p>`;
 
       cardDiv.appendChild(weatherDiv);
-
+      //Creamos un ad event listener cuya función será mostrar u ocultar el tiempo a través de un click en el div weatherDiv
       weatherDiv.addEventListener("click", async () => {
         if (!isWeatherSelected) {
           isWeatherSelected = true;
           // Limpia el contenido de weatherDiv antes de agregar el nuevo contenido
           weatherDiv.innerHTML = "";
-          // Agrega directamente el contenido obtenido de weatherRender
+          // Agrega directamente el contenido obtenido de weatherRender para cada playa
           let weatherContent = await weatherRender(beachId);
           weatherDiv.appendChild(weatherContent);
         } else {
@@ -94,9 +95,10 @@ export const main = () => {
           weatherDiv.innerHTML = "<p>Mostrar tiempo</p>";
         }
       });
-    }
+    } //AQUI ACABA EL FOR OF
 
     //! Introducimos el renderizado del index
+    //indexDiv se ha declarado de forma global
     indexDiv = indexRender(userArray);
     main.appendChild(indexDiv);
 
